@@ -243,27 +243,272 @@
 @media(max-width:640px){.hero{height:auto;min-height:720px}.hero-split{height:720px}.hero-half{height:360px}.hero-side-label.left{top:286px}.hero-side-label.right{top:646px}.capabilities{padding:32px 0 36px}.cap-head{display:block}.cap-head p{margin-top:12px}.cap-grid{grid-template-columns:repeat(2,1fr)}.cap-item{min-height:145px}.cap-item:nth-child(2n){border-right:0}}
 </style>
 
+
+<style id="approved-home-v4">
+:root{--orange:#ef7b10}
+
+/* Header */
+.site-header{
+  position:relative;
+  height:80px;
+  background:#070b0f;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav{
+  height:80px;min-height:80px;
+  grid-template-columns:260px 1fr 190px;
+}
+.brand{display:block;margin-left:0}
+.brand::before{display:none}
+.brand img{
+  width:220px;
+  max-height:58px;
+  object-fit:contain;
+  object-position:left center;
+  filter:brightness(0) invert(1);
+  opacity:.96;
+}
+
+/* Hero */
+.hero{
+  height:390px;
+  min-height:0;
+  margin:0;
+}
+.hero-left img{object-position:center 50%}
+.hero-right img{object-position:center 54%}
+.hero-half::after{
+  background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.10) 50%,rgba(0,0,0,.58));
+}
+.hero-side-label{bottom:20px}
+.hero-side-label.left{left:56px}
+.hero-side-label.right{right:56px}
+.hero-side-label strong{
+  font-size:clamp(30px,2.6vw,44px);
+  line-height:1;
+}
+.hero-side-label a{
+  margin-top:10px;
+  font-size:10px;
+  border-color:var(--orange);
+}
+.hero-side-label a::first-letter{color:inherit}
+
+/* Real-photo portfolio */
+.portfolio-showcase{
+  padding:34px 0 26px;
+  background:#090f14;
+  border-bottom:1px solid var(--line);
+}
+.portfolio-head{
+  text-align:center;
+  margin-bottom:20px;
+}
+.portfolio-head .eyebrow{
+  margin:0 0 6px;
+  color:var(--orange);
+}
+.portfolio-head h2{
+  margin:0;
+  font-size:clamp(30px,3vw,46px);
+  line-height:1.02;
+  letter-spacing:-.04em;
+}
+.portfolio-head p{
+  margin:10px auto 0;
+  max-width:760px;
+  color:var(--muted);
+  font-size:13px;
+}
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.portfolio-card{
+  position:relative;
+  min-height:305px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#0d141b;
+}
+.portfolio-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .45s ease;
+}
+.portfolio-card:nth-child(1) img{object-position:center 54%}
+.portfolio-card:nth-child(2) img{object-position:center 48%}
+.portfolio-card:nth-child(3) img{object-position:center 45%}
+.portfolio-card:hover img{transform:scale(1.015)}
+.portfolio-card::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.10) 52%,rgba(0,0,0,.78));
+}
+.portfolio-caption{
+  position:absolute;
+  left:22px;right:22px;bottom:18px;
+  z-index:2;
+}
+.portfolio-caption strong{
+  display:block;
+  font-size:16px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+.portfolio-caption span{
+  display:block;
+  margin-top:3px;
+  color:#d0d5da;
+  font-size:11px;
+}
+
+/* Benefit strip */
+.benefit-strip{
+  background:#080d11;
+  border-bottom:1px solid var(--line);
+}
+.benefit-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+}
+.benefit{
+  min-height:116px;
+  padding:18px 16px;
+  display:flex;
+  gap:13px;
+  align-items:center;
+  border-right:1px solid var(--line);
+}
+.benefit:last-child{border-right:0}
+.benefit-icon{
+  width:34px;height:34px;flex:0 0 34px;
+  color:var(--orange);
+}
+.benefit-icon svg{
+  width:100%;height:100%;
+  fill:none;stroke:currentColor;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.benefit strong{
+  display:block;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.benefit span{
+  display:block;
+  margin-top:3px;
+  color:#8e98a2;
+  font-size:10px;
+  line-height:1.35;
+}
+
+/* Make the next original section start naturally */
+.split{border-top:0}
+
+@media(max-width:1050px){
+  .portfolio-grid{grid-template-columns:1fr}
+  .portfolio-card{min-height:260px}
+  .benefit-grid{grid-template-columns:repeat(3,1fr)}
+  .benefit:nth-child(3){border-right:0}
+  .benefit:nth-child(-n+3){border-bottom:1px solid var(--line)}
+}
+
+@media(max-width:640px){
+  .site-header{height:74px}
+  .nav{height:74px;min-height:74px}
+  .brand img{width:175px}
+  .hero{height:auto;min-height:720px}
+  .hero-split{height:720px}
+  .hero-half{height:360px}
+  .hero-side-label.left{left:18px;top:286px;bottom:auto}
+  .hero-side-label.right{right:18px;top:646px;bottom:auto}
+  .portfolio-showcase{padding:28px 0 20px}
+  .portfolio-card{min-height:230px}
+  .benefit-grid{grid-template-columns:1fr 1fr}
+  .benefit{min-height:100px}
+  .benefit:nth-child(2n){border-right:0}
+  .benefit:nth-child(-n+4){border-bottom:1px solid var(--line)}
+}
+</style>
+
 </head>
 <body><div class="site-loader" id="siteLoader"><div class="loader-inner"><p class="loader-welcome">Vítejte</p><img class="loader-logo" src="Logo_pruhledny.png" alt="Autodoprava & Servis František Adámek"><div class="loader-track"><span class="loader-progress"></span></div></div></div>
 <header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="logo.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="#specializace">Specializace</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div></header>
 <main>
 <section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="dd.png" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="tank.JPG" alt="Servis F. Adámek – těžká technika v dílně"></div></div><img class="hero-center-logo" src="logo.png" alt="F. Adámek – Autodoprava & servis"><div class="hero-side-label left"><strong>AUTODOPRAVA</strong><a href="#autodoprava">VÍCE O AUTODOPRAVĚ →</a></div><div class="hero-side-label right"><strong>SERVIS</strong><a href="#servis">VÍCE O SERVISU →</a></div><div class="container hero-inner"></div></section>
-<section class="capabilities" aria-label="Přehled dopravy a servisu">
-<div class="container">
-  <div class="cap-head">
-    <div><p class="eyebrow">Široký záběr</p><h2>Převezeme prakticky cokoliv.</h2></div>
-    <p>Od dřeva a sypkých materiálů přes zemědělské komodity až po těžkou a speciální techniku. Stejně široký záběr má i náš servis.</p>
+<section class="portfolio-showcase" aria-label="Naše technika v praxi">
+  <div class="container">
+    <div class="portfolio-head">
+      <p class="eyebrow">Naše technika v praxi</p>
+      <h2>Každý náklad. Každá výzva.</h2>
+      <p>Reálná technika, reálné zakázky. Dřevo, sypké materiály i těžká technika.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <article class="portfolio-card">
+        <img src="drevo.jpg" alt="Přeprava dřeva F. Adámek">
+        <div class="portfolio-caption">
+          <strong>Dřevo a kulatina</strong>
+          <span>Přeprava dřeva a dřevní hmoty</span>
+        </div>
+      </article>
+
+      <article class="portfolio-card">
+        <img src="sterk.jpg" alt="Přeprava sypkých materiálů F. Adámek">
+        <div class="portfolio-caption">
+          <strong>Sypké materiály</strong>
+          <span>Písky, štěrky, drtě a stavební materiál</span>
+        </div>
+      </article>
+
+      <article class="portfolio-card">
+        <img src="man_tanl.jpg" alt="Přeprava těžké techniky F. Adámek">
+        <div class="portfolio-caption">
+          <strong>Těžká technika</strong>
+          <span>Přeprava stavební a těžké techniky</span>
+        </div>
+      </article>
+    </div>
   </div>
-  <div class="cap-grid">
-    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><circle cx="17" cy="30" r="8"/><circle cx="29" cy="26" r="8"/><path d="M8 38h32M14 22l6-8M23 18l5-9M31 20l6-8"/></svg></div><div><strong>Dřevo a kulatina</strong><span>Přeprava dřeva a lesního materiálu</span></div></article>
-    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M8 36h32L28 18H17z"/><path d="M13 31h22M17 26h14M22 21h5"/></svg></div><div><strong>Sypké materiály</strong><span>Štěrk, písek, kamenivo a další</span></div></article>
-    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M8 34h32M14 34V15h20v19M19 15v19M29 15v19"/><path d="M11 15h26"/></svg></div><div><strong>Obilí a komodity</strong><span>Zemědělské a volně ložené materiály</span></div></article>
-    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M6 31h27l7-8H29l-5-7H11v15z"/><circle cx="15" cy="35" r="4"/><circle cx="32" cy="35" r="4"/></svg></div><div><strong>Těžká technika</strong><span>Stroje, speciály a nestandardní náklady</span></div></article>
-    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><rect x="6" y="13" width="28" height="21" rx="2"/><path d="M34 23h5l4 5v6h-9z"/><circle cx="15" cy="36" r="3"/><circle cx="37" cy="36" r="3"/></svg></div><div><strong>Ostatní přeprava</strong><span>Když náklad není běžný, najdeme řešení</span></div></article>
-    <article class="cap-item cap-service"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M29 9a10 10 0 0 0 9 14L24 37a5 5 0 0 1-7-7l14-14a10 10 0 0 0-2-7z"/></svg></div><div><strong>Kompletní servis</strong><span>Nákladní vozy, autobusy a technika</span></div></article>
-  </div>
-</div>
 </section>
+
+<section class="benefit-strip" aria-label="Proč F. Adámek">
+  <div class="container benefit-grid">
+    <div class="benefit">
+      <div class="benefit-icon"><svg viewBox="0 0 48 48"><path d="M24 5l15 6v11c0 10-6 17-15 21C15 39 9 32 9 22V11z"/><path d="M17 24l5 5 10-11"/></svg></div>
+      <div><strong>20+ let zkušeností</strong><span>V oboru autodopravy a servisu</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="16" r="8"/><path d="M10 42c1-10 7-15 14-15s13 5 14 15"/></svg></div>
+      <div><strong>Osobní přístup</strong><span>Jednáte přímo s lidmi z praxe</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M24 14v11l7 4"/></svg></div>
+      <div><strong>Spolehlivost</strong><span>Dodržujeme termíny a domluvu</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon"><svg viewBox="0 0 48 48"><path d="M29 9a10 10 0 0 0 9 14L24 37a5 5 0 0 1-7-7l14-14a10 10 0 0 0-2-7z"/></svg></div>
+      <div><strong>Vlastní servis</strong><span>Kompletní servis vozidel a autobusů</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="8"/><path d="M24 5v5M24 38v5M5 24h5M38 24h5M10.5 10.5l3.5 3.5M34 34l3.5 3.5M37.5 10.5L34 14M14 34l-3.5 3.5"/></svg></div>
+      <div><strong>Moderní technika</strong><span>Pravidelně obnovovaný vozový park</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon"><svg viewBox="0 0 48 48"><path d="M24 43s12-11 12-24a12 12 0 1 0-24 0c0 13 12 24 12 24z"/><circle cx="24" cy="19" r="4"/></svg></div>
+      <div><strong>Působíme po celé ČR</strong><span>Rychle a flexibilně po republice</span></div>
+    </div>
+  </div>
+</section>
+
+
 
 
 
