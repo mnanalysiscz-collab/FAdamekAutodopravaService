@@ -142,7 +142,7 @@ img{display:block;max-width:100%}
 /* Hero */
 .hero{
   position:relative;
-  height:400px;
+  height:440px;
   min-height:0;
   padding-top:0;
   overflow:hidden;
@@ -212,13 +212,13 @@ img{display:block;max-width:100%}
 
 /* Photo portfolio */
 .portfolio-showcase{
-  padding:14px 0 18px;
+  padding:20px 0 22px;
   background:#090f14;
   border-bottom:1px solid var(--line)
 }
 .portfolio-head{
   text-align:center;
-  margin-bottom:9px
+  margin-bottom:12px
 }
 .portfolio-showcase .container{
   width:min(1660px,calc(100% - 32px));
@@ -229,11 +229,11 @@ img{display:block;max-width:100%}
 }
 .portfolio-head h2{
   margin:0;
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size:clamp(30px,2.5vw,40px);
-  font-weight:800;
-  line-height:1.08;
-  letter-spacing:-.025em
+  font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
+  font-size:clamp(34px,3.1vw,50px);
+  font-weight:700;
+  line-height:1.02;
+  letter-spacing:-.04em
 }
 .portfolio-head p{
   margin:6px auto 0;
@@ -250,8 +250,7 @@ img{display:block;max-width:100%}
 }
 .portfolio-card{
   position:relative;
-  height:clamp(220px,19vw,270px);
-  min-height:0;
+  min-height:300px;
   overflow:hidden;
   border:1px solid var(--line);
   border-radius:8px;
@@ -260,12 +259,12 @@ img{display:block;max-width:100%}
 .portfolio-card img{
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
   transition:transform .45s ease
 }
-.portfolio-card:nth-child(1) img{object-position:center center;background:#0d141b}
-.portfolio-card:nth-child(2) img{object-position:center center;background:#0d141b}
-.portfolio-card:nth-child(3) img{object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(1) img{object-fit:cover;object-position:30% center;background:#0d141b}
+.portfolio-card:nth-child(2) img{object-fit:cover;object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(3) img{object-fit:cover;object-position:center center;background:#0d141b}
 .portfolio-card:hover img{transform:scale(1.015)}
 .portfolio-card::after{
   content:"";
@@ -595,7 +594,7 @@ footer{
 <body><div class="site-loader" id="siteLoader"><div class="loader-inner"><p class="loader-welcome">Vítejte</p><img class="loader-logo" src="Logo_pruhledny.png" alt="Autodoprava & Servis František Adámek"><div class="loader-track"><span class="loader-progress"></span></div></div></div>
 <header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="#specializace">Specializace</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div></header>
 <main>
-<section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="herkolog.png" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="IMG_8735.jpeg" alt="Servis F. Adámek – přeprava těžké techniky"></div></div><div class="hero-side-label left"><a href="#autodoprava">VÍCE O AUTODOPRAVĚ →</a></div><div class="hero-side-label right"><a href="#servis">VÍCE O SERVISU →</a></div></section>
+<section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="IMG_8736.jpeg" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="IMG_8735.jpeg" alt="Servis F. Adámek – přeprava těžké techniky"></div></div><div class="hero-side-label left"><a href="#autodoprava">VÍCE O AUTODOPRAVĚ →</a></div><div class="hero-side-label right"><a href="#servis">VÍCE O SERVISU →</a></div></section>
 <section class="portfolio-showcase" aria-label="Naše technika v praxi">
   <div class="container">
     <div class="portfolio-head">
