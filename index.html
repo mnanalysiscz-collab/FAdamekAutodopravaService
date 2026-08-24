@@ -173,7 +173,13 @@ img{display:block;max-width:100%}
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.10) 50%,rgba(0,0,0,.58))
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,.02) 0%,
+    rgba(0,0,0,.08) 46%,
+    rgba(0,0,0,.34) 72%,
+    rgba(10,14,18,.88) 100%
+  )
 }
 .hero::after{
   content:"";
@@ -190,7 +196,7 @@ img{display:block;max-width:100%}
 .hero-inner{height:100%;padding:0}
 .hero-side-label{
   position:absolute;
-  bottom:24px;
+  bottom:28px;
   z-index:6
 }
 .hero-side-label.left{left:25%;transform:translateX(-50%);text-align:center}
@@ -217,14 +223,18 @@ img{display:block;max-width:100%}
 
 /* Photo portfolio */
 .portfolio-showcase{
-  background:linear-gradient(180deg,#171b1f 0%,#11161a 55%,#0d1216 100%);
-  padding:34px 0 28px;
-  border-top:1px solid rgba(255,255,255,.10);
+  position:relative;
+  margin-top:-1px;
+  padding:26px 0 30px;
+  background:linear-gradient(180deg,#0a0e12 0%,#0d1216 38%,#10161b 100%);
+  border-top:0;
   border-bottom:1px solid var(--line)
 }
 .portfolio-head{
+  position:relative;
   text-align:center;
-  margin-bottom:22px
+  margin-bottom:24px;
+  padding-top:2px
 }
 .portfolio-showcase .container{
   width:min(1660px,calc(100% - 32px));
@@ -237,25 +247,27 @@ img{display:block;max-width:100%}
   position:relative;
   display:inline-block;
   margin:0;
-  padding-bottom:14px;
+  padding-bottom:13px;
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size:clamp(30px,2.65vw,43px);
-  font-weight:750;
+  font-size:clamp(29px,2.45vw,40px);
+  font-weight:720;
   line-height:1.08;
-  letter-spacing:-.035em
+  letter-spacing:-.03em
 }
 .portfolio-head h2::after{
   content:"";
   position:absolute;
   left:50%;
   bottom:0;
-  width:54px;
+  width:42px;
   height:2px;
   background:var(--orange);
-  transform:translateX(-50%)
+  transform:translateX(-50%);
+  border-radius:2px;
+  box-shadow:0 0 8px rgba(239,123,16,.18)
 }
 .portfolio-head p{
-  margin:12px auto 0;
+  margin:13px auto 0;
   max-width:760px;
   color:#d7dce1;
   font-size:clamp(17px,1.45vw,22px);
@@ -265,7 +277,8 @@ img{display:block;max-width:100%}
 .portfolio-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px
+  gap:10px;
+  margin-top:2px
 }
 .portfolio-card{
   position:relative;
