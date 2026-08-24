@@ -82,8 +82,10 @@ img{display:block;max-width:100%}
   position:relative;
   height:80px;
   z-index:20;
-  background:#070b0f;
-  border-bottom:1px solid rgba(255,255,255,.08)
+  background:rgba(7,11,15,.38);
+  border-bottom:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px)
 }
 .nav{
   height:80px;
@@ -158,7 +160,8 @@ img{display:block;max-width:100%}
 }
 .hero-half:hover img{transform:scale(1.012)}
 .hero-left img{object-position:center center}
-.hero-right img{object-position:center 52%}
+.hero-right img{object-position:center 52%;transform:scale(.88)}
+.hero-half.hero-right:hover img{transform:scale(.89)}
 .hero-half::after{
   content:"";
   position:absolute;
