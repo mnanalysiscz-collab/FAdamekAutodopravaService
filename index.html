@@ -157,7 +157,7 @@ img{display:block;max-width:100%}
   transition:transform .45s ease
 }
 .hero-half:hover img{transform:scale(1.012)}
-.hero-left img{object-position:center 58%}
+.hero-left img{object-position:center 66%}
 .hero-right img{object-position:center 52%}
 .hero-half::after{
   content:"";
@@ -214,7 +214,7 @@ img{display:block;max-width:100%}
   margin-bottom:12px
 }
 .portfolio-showcase .container{
-  width:min(1500px,calc(100% - 64px));
+  width:min(1660px,calc(100% - 32px));
 }
 .portfolio-head .eyebrow{
   margin:0 0 6px;
@@ -239,7 +239,7 @@ img{display:block;max-width:100%}
 }
 .portfolio-card{
   position:relative;
-  min-height:305px;
+  min-height:300px;
   overflow:hidden;
   border:1px solid var(--line);
   border-radius:8px;
@@ -251,9 +251,9 @@ img{display:block;max-width:100%}
   object-fit:cover;
   transition:transform .45s ease
 }
-.portfolio-card:nth-child(1) img{object-position:center 62%}
-.portfolio-card:nth-child(2) img{object-position:center 58%}
-.portfolio-card:nth-child(3) img{object-position:center 56%}
+.portfolio-card:nth-child(1) img{object-fit:contain;object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(2) img{object-fit:contain;object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(3) img{object-fit:contain;object-position:center center;background:#0d141b}
 .portfolio-card:hover img{transform:scale(1.015)}
 .portfolio-card::after{
   content:"";
