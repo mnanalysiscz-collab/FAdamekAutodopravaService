@@ -106,8 +106,8 @@ img{display:block;max-width:100%}
   max-height:58px;
   object-fit:contain;
   object-position:left center;
-  filter:none;
-  opacity:1
+  filter:brightness(0) invert(1);
+  opacity:.96
 }
 .nav-links{
   display:flex;
@@ -258,9 +258,9 @@ img{display:block;max-width:100%}
   object-fit:cover;
   transition:transform .45s ease
 }
-.portfolio-card:nth-child(1) img{object-fit:contain;object-position:center center;background:#0d141b}
-.portfolio-card:nth-child(2) img{object-fit:contain;object-position:center center;background:#0d141b}
-.portfolio-card:nth-child(3) img{object-fit:contain;object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(1) img{object-fit:cover;object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(2) img{object-fit:cover;object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(3) img{object-fit:cover;object-position:center center;background:#0d141b}
 .portfolio-card:hover img{transform:scale(1.015)}
 .portfolio-card::after{
   content:"";
@@ -616,7 +616,7 @@ footer{
       </article>
 
       <article class="portfolio-card">
-        <img src="man_tanl.jpg" alt="Přeprava těžké techniky F. Adámek">
+        <img src="tank.jpg" alt="Přeprava těžké techniky F. Adámek">
         <div class="portfolio-caption">
           <strong>Těžká technika</strong>
           <span>Přeprava stavební a těžké techniky</span>
