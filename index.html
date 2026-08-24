@@ -221,44 +221,51 @@
 }
 </style>
 
+
+<style id="refinement-v3">
+:root{--orange:#ef7b10}
+.brand img{width:220px;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,.12));opacity:.94}
+.hero{height:470px}
+.hero-left img{object-position:center 49%}.hero-right img{object-position:center 53%}
+.hero-half::after{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.08) 48%,rgba(0,0,0,.58))}
+.hero-side-label{bottom:26px}.hero-side-label strong{font-size:clamp(27px,2.5vw,41px)}.hero-side-label a{font-size:10px;letter-spacing:.06em}
+.capabilities{background:#090f14;border-bottom:1px solid var(--line);padding:42px 0 46px}
+.cap-head{display:flex;align-items:flex-end;justify-content:space-between;gap:42px;margin-bottom:28px}
+.cap-head .eyebrow{margin:0 0 8px;color:var(--orange)}
+.cap-head h2{margin:0;font-size:clamp(29px,2.8vw,44px);line-height:1.02;letter-spacing:-.04em}
+.cap-head p{max-width:560px;margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+.cap-grid{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.012)}
+.cap-item{min-height:155px;padding:22px 16px 18px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--line)}
+.cap-item:last-child{border-right:0}.cap-icon{width:42px;height:42px;color:var(--orange)}.cap-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
+.cap-item strong{display:block;font-size:12px;line-height:1.35;letter-spacing:.035em;text-transform:uppercase}.cap-item span{display:block;margin-top:5px;color:#818b94;font-size:10px;line-height:1.35}
+.cap-service{background:linear-gradient(145deg,rgba(239,123,16,.055),rgba(255,255,255,.012))}.cap-service .cap-icon{color:#f4f4f4}
+@media(max-width:1050px){.hero{height:450px}.cap-grid{grid-template-columns:repeat(3,1fr)}.cap-item:nth-child(3){border-right:0}.cap-item:nth-child(-n+3){border-bottom:1px solid var(--line)}}
+@media(max-width:640px){.hero{height:auto;min-height:720px}.hero-split{height:720px}.hero-half{height:360px}.hero-side-label.left{top:286px}.hero-side-label.right{top:646px}.capabilities{padding:32px 0 36px}.cap-head{display:block}.cap-head p{margin-top:12px}.cap-grid{grid-template-columns:repeat(2,1fr)}.cap-item{min-height:145px}.cap-item:nth-child(2n){border-right:0}}
+</style>
+
 </head>
 <body><div class="site-loader" id="siteLoader"><div class="loader-inner"><p class="loader-welcome">Vítejte</p><img class="loader-logo" src="Logo_pruhledny.png" alt="Autodoprava & Servis František Adámek"><div class="loader-track"><span class="loader-progress"></span></div></div></div>
 <header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="logo.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="#specializace">Specializace</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div></header>
 <main>
 <section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="dd.png" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="tank.JPG" alt="Servis F. Adámek – těžká technika v dílně"></div></div><img class="hero-center-logo" src="logo.png" alt="F. Adámek – Autodoprava & servis"><div class="hero-side-label left"><strong>AUTODOPRAVA</strong><a href="#autodoprava">VÍCE O AUTODOPRAVĚ →</a></div><div class="hero-side-label right"><strong>SERVIS</strong><a href="#servis">VÍCE O SERVISU →</a></div><div class="container hero-inner"></div></section>
-<section class="range-showcase" aria-label="Rozsah dopravy a servisu">
-  <div class="container">
-    <div class="range-head">
-      <div>
-        <p class="eyebrow">Široký záběr</p>
-        <h2>Převezeme prakticky cokoliv.</h2>
-      </div>
-      <p>Od dřeva a sypkých materiálů až po těžkou techniku. A když technika potřebuje servis, řešíme i to.</p>
-    </div>
-    <div class="range-grid">
-      <article class="range-card">
-        <img src="drevo.jpg" alt="Přeprava dřeva F. Adámek">
-        <span>Dřevo a kulatina</span>
-      </article>
-      <article class="range-card">
-        <img src="sterk.jpg" alt="Přeprava sypkých materiálů F. Adámek">
-        <span>Štěrk a sypké materiály</span>
-      </article>
-      <article class="range-card">
-        <img src="man_tanl.jpg" alt="Přeprava těžké techniky F. Adámek">
-        <span>Těžká technika</span>
-      </article>
-      <article class="range-service">
-        <div>
-          <span class="mini">Servis</span>
-          <strong>Nákladní vozy, autobusy i technika.</strong>
-          <p>Opravy vozidel, autobusů, převodovek, diferenciálů a dalšího vybavení.</p>
-        </div>
-        <a href="#servis">Více o servisu →</a>
-      </article>
-    </div>
+<section class="capabilities" aria-label="Přehled dopravy a servisu">
+<div class="container">
+  <div class="cap-head">
+    <div><p class="eyebrow">Široký záběr</p><h2>Převezeme prakticky cokoliv.</h2></div>
+    <p>Od dřeva a sypkých materiálů přes zemědělské komodity až po těžkou a speciální techniku. Stejně široký záběr má i náš servis.</p>
   </div>
+  <div class="cap-grid">
+    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><circle cx="17" cy="30" r="8"/><circle cx="29" cy="26" r="8"/><path d="M8 38h32M14 22l6-8M23 18l5-9M31 20l6-8"/></svg></div><div><strong>Dřevo a kulatina</strong><span>Přeprava dřeva a lesního materiálu</span></div></article>
+    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M8 36h32L28 18H17z"/><path d="M13 31h22M17 26h14M22 21h5"/></svg></div><div><strong>Sypké materiály</strong><span>Štěrk, písek, kamenivo a další</span></div></article>
+    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M8 34h32M14 34V15h20v19M19 15v19M29 15v19"/><path d="M11 15h26"/></svg></div><div><strong>Obilí a komodity</strong><span>Zemědělské a volně ložené materiály</span></div></article>
+    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M6 31h27l7-8H29l-5-7H11v15z"/><circle cx="15" cy="35" r="4"/><circle cx="32" cy="35" r="4"/></svg></div><div><strong>Těžká technika</strong><span>Stroje, speciály a nestandardní náklady</span></div></article>
+    <article class="cap-item"><div class="cap-icon"><svg viewBox="0 0 48 48"><rect x="6" y="13" width="28" height="21" rx="2"/><path d="M34 23h5l4 5v6h-9z"/><circle cx="15" cy="36" r="3"/><circle cx="37" cy="36" r="3"/></svg></div><div><strong>Ostatní přeprava</strong><span>Když náklad není běžný, najdeme řešení</span></div></article>
+    <article class="cap-item cap-service"><div class="cap-icon"><svg viewBox="0 0 48 48"><path d="M29 9a10 10 0 0 0 9 14L24 37a5 5 0 0 1-7-7l14-14a10 10 0 0 0-2-7z"/></svg></div><div><strong>Kompletní servis</strong><span>Nákladní vozy, autobusy a technika</span></div></article>
+  </div>
+</div>
 </section>
+
+
 
 <section class="split"><article class="pillar" id="autodoprava"><div><span class="pillar-number">01 / AUTODOPRAVA</span><h2>Od sypkých materiálů po nadrozměr.</h2><p>Zajišťujeme přepravu kameniva, písku, obilí a dalších sypkých materiálů. Pracujeme se sklápěcími návěsy a řešíme také nadrozměrnou přepravu.</p><ul class="feature-list"><li>Sypké materiály, kamenivo, písek a obilí</li><li>Sklápěcí návěsy</li><li>Nadrozměrná přeprava</li><li>Vyprošťovací technika</li></ul></div><a class="pillar-link" href="#kontakt">Poptat dopravu →</a></article><article class="pillar" id="servis"><div><span class="pillar-number">02 / SERVIS</span><h2>Servis, který má stejnou váhu jako doprava.</h2><p>Provádíme běžné i specializované opravy nákladních vozidel a autobusů. Servis není doplněk autodopravy – je plnohodnotnou částí firmy.</p><ul class="feature-list"><li>Běžné opravy nákladních vozidel</li><li>Servis a opravy autobusů</li><li>Opravy převodovek</li><li>Opravy diferenciálů</li></ul></div><a class="pillar-link" href="#kontakt">Objednat servis →</a></article></section>
 <section class="services" id="specializace"><div class="container"><div class="services-head"><div><p class="eyebrow">Co děláme</p><h2 class="section-title">Technika na cestě i v dílně.</h2></div><p class="section-lead">Od přepravy materiálu přes běžný servis až po specializované opravy převodovek a diferenciálů.</p></div><div class="service-grid"><article class="service-card"><span class="num">01</span><h3>Autodoprava</h3><p>Sypké materiály, kamenivo, písek, obilí, sklápěcí návěsy a nadrozměrná přeprava.</p></article><article class="service-card"><span class="num">02</span><h3>Servis nákladních vozidel</h3><p>Běžné opravy a údržba nákladních vozidel i autobusů.</p></article><article class="service-card"><span class="num">03</span><h3>Převodovky & diferenciály</h3><p>Specializované opravy převodovek a diferenciálů nákladních vozidel a autobusů.</p><div class="brands">ZF · Volvo · Scania · Mercedes-Benz · Eaton</div></article><article class="service-card"><span class="num">04</span><h3>Vyprošťovací technika</h3><p>Pomoc při problémech s těžkou technikou a vyproštění nákladních vozidel.</p></article></div></div></section>
