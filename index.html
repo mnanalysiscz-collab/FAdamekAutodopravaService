@@ -79,13 +79,16 @@ img{display:block;max-width:100%}
 
 /* Header */
 .site-header{
-  position:relative;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
   height:80px;
   z-index:20;
-  background:rgba(7,11,15,.38);
-  border-bottom:1px solid rgba(255,255,255,.10);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px)
+  background:linear-gradient(180deg,rgba(7,11,15,.72),rgba(7,11,15,.18) 72%,transparent);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px)
 }
 .nav{
   height:80px;
@@ -138,8 +141,9 @@ img{display:block;max-width:100%}
 /* Hero */
 .hero{
   position:relative;
-  height:360px;
+  height:440px;
   min-height:0;
+  padding-top:80px;
   overflow:hidden;
   isolation:isolate;
   background:#0b1015
@@ -160,8 +164,7 @@ img{display:block;max-width:100%}
 }
 .hero-half:hover img{transform:scale(1.012)}
 .hero-left img{object-position:center center}
-.hero-right img{object-position:center 52%;transform:scale(.88)}
-.hero-half.hero-right:hover img{transform:scale(.89)}
+.hero-right img{object-position:center 52%}
 .hero-half::after{
   content:"";
   position:absolute;
