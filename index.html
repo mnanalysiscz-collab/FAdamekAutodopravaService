@@ -233,17 +233,48 @@ img{display:block;max-width:100%}
 .hero-quicklinks a{
   justify-self:center;
   display:inline-block;
-  padding:6px 0 5px;
-  border-bottom:1px solid rgba(239,123,16,.82);
+  position:relative;
+  padding:7px 6px 8px;
   color:#fff;
   font-size:14px;
   font-weight:850;
   letter-spacing:.055em;
-  transition:color .2s ease,border-color .2s ease
+  text-shadow:0 0 0 rgba(239,123,16,0);
+  transition:color .25s ease,transform .25s ease,text-shadow .25s ease
 }
-.hero-quicklinks a:hover{
-  color:#fff;
-  border-bottom-color:var(--orange)
+.hero-quicklinks a::after{
+  content:"";
+  position:absolute;
+  left:6px;
+  right:6px;
+  bottom:0;
+  height:2px;
+  background:var(--orange);
+  transform:scaleX(.58);
+  transform-origin:center;
+  opacity:.82;
+  transition:transform .28s ease,opacity .28s ease,box-shadow .28s ease
+}
+.hero-quicklinks a span{
+  display:inline-block;
+  margin-left:3px;
+  transition:transform .25s ease
+}
+.hero-quicklinks a:hover,
+.hero-quicklinks a:focus-visible{
+  color:#ffd1a1;
+  transform:translateY(-2px);
+  text-shadow:0 0 12px rgba(239,123,16,.58)
+}
+.hero-quicklinks a:hover::after,
+.hero-quicklinks a:focus-visible::after{
+  transform:scaleX(1);
+  opacity:1;
+  box-shadow:0 0 10px rgba(239,123,16,.72)
+}
+.hero-quicklinks a:hover span,
+.hero-quicklinks a:focus-visible span{
+  transform:translateX(6px)
 }
 .quicklinks-experience{
   display:flex;
@@ -550,6 +581,16 @@ footer{
 }
 .footer-inner{display:flex;justify-content:space-between;gap:20px}
 
+@media(prefers-reduced-motion:reduce){
+  .hero-quicklinks a,
+  .hero-quicklinks a::after,
+  .hero-quicklinks a span{transition:none}
+  .hero-quicklinks a:hover,
+  .hero-quicklinks a:focus-visible,
+  .hero-quicklinks a:hover span,
+  .hero-quicklinks a:focus-visible span{transform:none}
+}
+
 @media(max-width:1050px){
   .nav{grid-template-columns:1fr auto}
   .nav-links{display:none}
@@ -615,12 +656,12 @@ footer{
 <main>
 <section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="IMG_8736.jpeg" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="IMG_8735.jpeg" alt="Servis F. Adámek – přeprava těžké techniky"></div></div></section>
 <section class="hero-quicklinks" aria-label="Rychlé odkazy">
-  <a href="#autodoprava">VÍCE O AUTODOPRAVĚ →</a>
+  <a href="#autodoprava">VÍCE O AUTODOPRAVĚ <span aria-hidden="true">→</span></a>
   <div class="quicklinks-experience">
     <strong>Přes 20 let zkušeností.</strong>
     <span>Dopravu i vlastní servis známe z každodenní praxe.</span>
   </div>
-  <a href="#servis">VÍCE O SERVISU →</a>
+  <a href="#servis">VÍCE O SERVISU <span aria-hidden="true">→</span></a>
 </section>
 <section class="portfolio-showcase" aria-label="Naše technika v praxi">
   <div class="container">
