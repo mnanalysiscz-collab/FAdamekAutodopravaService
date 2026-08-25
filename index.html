@@ -245,6 +245,40 @@ img{display:block;max-width:100%}
   border-bottom-color:var(--orange)
 }
 
+/* Experience statement */
+.experience-strip{
+  background:#0a0e12;
+  border-bottom:1px solid rgba(255,255,255,.08)
+}
+.experience-inner{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  text-align:center
+}
+.experience-inner strong{
+  color:#fff;
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:.06em;
+  text-transform:uppercase
+}
+.experience-inner strong::after{
+  content:"";
+  display:inline-block;
+  width:20px;
+  height:1px;
+  margin-left:14px;
+  vertical-align:middle;
+  background:var(--orange)
+}
+.experience-inner span{
+  color:#9da7b0;
+  font-size:12px
+}
+
 /* Photo portfolio */
 .portfolio-showcase{
   position:relative;
@@ -333,12 +367,13 @@ img{display:block;max-width:100%}
   height:225px;
   flex:0 0 225px;
   object-fit:cover;
-  transition:transform .45s ease
+  transition:none;
+  transform:none;
+  filter:none
 }
 .portfolio-card:nth-child(1) img{object-fit:cover;object-position:30% center;background:#0d141b}
 .portfolio-card:nth-child(2) img{object-fit:cover;object-position:center center;background:#0d141b}
 .portfolio-card:nth-child(3) img{object-fit:cover;object-position:center center;background:#0d141b}
-.portfolio-card:hover img{transform:scale(1.015)}
 .portfolio-card::after{display:none}
 .portfolio-caption{
   position:relative;
@@ -604,6 +639,13 @@ footer{
   .hero-side-label a{font-size:9px}
   .hero-quicklinks{grid-template-columns:1fr}
   .hero-quicklinks a{font-size:11px;padding:10px 0 8px}
+  .experience-inner{
+    min-height:62px;
+    flex-direction:column;
+    gap:3px;
+    padding:10px 0
+  }
+  .experience-inner strong::after{display:none}
 
   .portfolio-showcase{padding:24px 0 20px}
   .portfolio-showcase .container{width:min(var(--max),calc(100% - 30px))}
@@ -628,65 +670,22 @@ footer{
   .footer-inner{flex-direction:column}
 }
 </style>
-<style id="loader-style">
-.site-loader{
-  position:fixed;inset:0;z-index:99999;
-  display:flex;align-items:center;justify-content:center;
-  background:#05090d;
-  opacity:1;visibility:visible;
-  transition:opacity .7s ease,visibility .7s ease;
-}
-.site-loader.is-done{opacity:0;visibility:hidden;pointer-events:none}
-.loader-inner{width:min(560px,calc(100% - 42px));text-align:center}
-.loader-welcome{
-  position:relative;
-  margin:0 0 46px;
-  color:rgba(255,255,255,.78);
-  font-size:10px;font-weight:800;
-  letter-spacing:.42em;text-transform:uppercase;
-}
-.loader-welcome::after{
-  content:"";position:absolute;left:50%;bottom:-15px;
-  width:34px;height:1px;background:rgba(255,255,255,.62);
-  transform:translateX(-50%);
-}
-.loader-logo{
-  display:block;width:min(470px,88%);height:auto;
-  margin:0 auto 42px;
-  opacity:.84;
-  filter:drop-shadow(0 0 6px rgba(255,255,255,.34))
-         drop-shadow(0 0 16px rgba(255,255,255,.13));
-}
-.loader-track{
-  position:relative;width:100%;height:2px;
-  background:rgba(255,255,255,.12);
-  overflow:hidden;
-}
-.loader-progress{
-  position:absolute;top:0;bottom:0;left:50%;
-  width:0;
-  background:#fff;
-  transform:translateX(-50%);
-  box-shadow:0 0 10px rgba(255,255,255,.48);
-}
-.loader-progress.run{
-  animation:loaderFill 1.55s cubic-bezier(.65,0,.35,1) forwards;
-}
-@keyframes loaderFill{
-  from{width:0}
-  to{width:100%}
-}
-</style>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Autodoprava & Servis František Adámek","telephone":"+420608963545","foundingDate":"2001","address":{"@type":"PostalAddress","streetAddress":"K Panelárně","addressLocality":"Otovice","postalCode":"360 01","addressCountry":"CZ"},"url":"https://mnanalysiscz-collab.github.io/FAdamekAutodopravaService/","description":"Autodoprava, servis nákladních vozidel a autobusů, opravy převodovek a diferenciálů, nadrozměrná přeprava a vyprošťovací technika."}</script>
 </head>
-<body><div class="site-loader" id="siteLoader"><div class="loader-inner"><p class="loader-welcome">Vítejte</p><img class="loader-logo" src="Logo_pruhledny.png" alt="Autodoprava & Servis František Adámek"><div class="loader-track"><span class="loader-progress"></span></div></div></div>
+<body>
 <header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="#specializace">Specializace</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div></header>
 <main>
 <section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="IMG_8736.jpeg" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="IMG_8735.jpeg" alt="Servis F. Adámek – přeprava těžké techniky"></div></div></section>
 <section class="hero-quicklinks" aria-label="Rychlé odkazy">
   <a href="#autodoprava">VÍCE O AUTODOPRAVĚ →</a>
   <a href="#servis">VÍCE O SERVISU →</a>
+</section>
+<section class="experience-strip" aria-label="Zkušenosti">
+  <div class="container experience-inner">
+    <strong>Přes 20 let zkušeností.</strong>
+    <span>Dopravu i vlastní servis známe z každodenní praxe.</span>
+  </div>
 </section>
 <section class="portfolio-showcase" aria-label="Naše technika v praxi">
   <div class="container">
@@ -763,24 +762,5 @@ footer{
 <section class="contact" id="kontakt"><div class="container contact-grid"><div><p class="eyebrow">Kontakt</p><h2>Potřebujete dopravu nebo servis?</h2><p class="section-lead">Zavolejte přímo. Domluvíme přepravu, termín opravy nebo další postup.</p><div class="contact-list"><div class="contact-row"><span>Telefon</span><a href="tel:+420608963545">+420 608 963 545</a></div><div class="contact-row"><span>Provozovna</span><address>K Panelárně, Otovice, 360 01</address></div><div class="contact-row"><span>Firma</span><div>Autodoprava & Servis František Adámek</div></div></div></div><aside class="contact-card"><img src="logo.png" alt="F. Adámek – logo"><p>Autodoprava a servis nákladních vozidel a autobusů pod jednou střechou. Od roku 2001.</p><a class="btn btn-primary" href="tel:+420608963545">Zavolat +420 608 963 545</a></aside></div></section>
 </main>
 <footer><div class="container footer-inner"><span>© Autodoprava & Servis František Adámek</span><span>K Panelárně, Otovice 360 01</span></div></footer>
-<script>
-(function(){
-  var loader=document.getElementById("siteLoader");
-  var progress=document.querySelector(".loader-progress");
-  if(!loader||!progress) return;
-
-  requestAnimationFrame(function(){
-    requestAnimationFrame(function(){
-      progress.classList.add("run");
-    });
-  });
-
-  function finish(){
-    loader.classList.add("is-done");
-    setTimeout(function(){ loader.remove(); },700);
-  }
-
-  setTimeout(finish,2100);
-})();
-</script></body>
+</body>
 </html>
