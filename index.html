@@ -367,7 +367,7 @@ img{display:block;max-width:100%}
 }
 .portfolio-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:10px;
   margin-top:0
 }
@@ -393,6 +393,7 @@ img{display:block;max-width:100%}
 .portfolio-card:nth-child(1) img{object-fit:cover;object-position:30% center;background:#0d141b}
 .portfolio-card:nth-child(2) img{object-fit:cover;object-position:center center;background:#0d141b}
 .portfolio-card:nth-child(3) img{object-fit:cover;object-position:center center;background:#0d141b}
+.portfolio-card:nth-child(4) img{object-fit:cover;object-position:center center;background:#0d141b}
 .portfolio-card::after{
   content:"";
   position:absolute;
@@ -437,6 +438,14 @@ img{display:block;max-width:100%}
   color:#c6cbd0;
   font-size:12px;
   font-weight:450
+}
+.portfolio-caption small{
+  display:block;
+  margin-top:5px;
+  color:#9da7b0;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.35
 }
 
 /* Main content */
@@ -594,8 +603,8 @@ footer{
 @media(max-width:1050px){
   .nav{grid-template-columns:1fr auto}
   .nav-links{display:none}
-  .portfolio-grid{grid-template-columns:1fr}
-  .portfolio-card{height:320px;min-height:0}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .portfolio-card{height:280px;min-height:0}
   .portfolio-card img{height:100%}
   .split{grid-template-columns:1fr}
   .pillar:first-child{border-right:0;border-bottom:1px solid var(--line)}
@@ -632,6 +641,7 @@ footer{
 
   .portfolio-showcase{padding:8px 0 20px}
   .portfolio-showcase .container{width:min(var(--max),calc(100% - 30px))}
+  .portfolio-grid{grid-template-columns:1fr}
   .portfolio-card{height:260px;min-height:0}
   .portfolio-card img{height:100%}
 
@@ -692,6 +702,15 @@ footer{
         <div class="portfolio-caption">
           <strong>Těžká technika</strong>
           <span>Přeprava stavební,těžké a vojenské techniky</span>
+        </div>
+      </article>
+
+      <article class="portfolio-card">
+        <img src="prevodovka.webp" loading="lazy" decoding="async" alt="Opravy převodovek a diferenciálů nákladních vozidel a autobusů">
+        <div class="portfolio-caption">
+          <strong>Převodovky a diferenciály</strong>
+          <span>Opravy nákladních vozidel a autobusů</span>
+          <small>ZF · Volvo · Scania · Mercedes-Benz · Eaton</small>
         </div>
       </article>
     </div>
