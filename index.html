@@ -365,6 +365,10 @@ img{display:block;max-width:100%}
     text-shadow:0 0 12px rgba(255,255,255,.08)
   }
 }
+.portfolio-showcase .container{
+  width:calc(100% - 48px);
+  max-width:none
+}
 .portfolio-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -373,7 +377,7 @@ img{display:block;max-width:100%}
 }
 .portfolio-card{
   position:relative;
-  height:285px;
+  height:315px;
   min-height:0;
   overflow:hidden;
   display:block;
@@ -604,7 +608,7 @@ footer{
   .nav{grid-template-columns:1fr auto}
   .nav-links{display:none}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
-  .portfolio-card{height:280px;min-height:0}
+  .portfolio-card{height:300px;min-height:0}
   .portfolio-card img{height:100%}
   .split{grid-template-columns:1fr}
   .pillar:first-child{border-right:0;border-bottom:1px solid var(--line)}
