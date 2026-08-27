@@ -47,13 +47,6 @@ img{display:block;max-width:100%}
   text-transform:uppercase;
   color:#d9dde1
 }
-.section-title{
-  margin:0;
-  max-width:850px;
-  font-size:clamp(38px,4.2vw,66px);
-  line-height:1.02;
-  letter-spacing:-.045em
-}
 .section-lead{
   margin:22px 0 0;
   max-width:720px;
@@ -445,32 +438,62 @@ img{display:block;max-width:100%}
 }
 /* Main content */
 .split{
+  position:relative;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  background:linear-gradient(135deg,#0d151c 0%,#091017 50%,#0d151c 100%);
+  border-top:1px solid var(--line);
   border-bottom:1px solid var(--line)
 }
+.split-heading{
+  grid-column:1 / -1;
+  padding:52px 48px 24px;
+  text-align:center
+}
+.split-heading h2{
+  position:relative;
+  display:inline-block;
+  margin:0;
+  padding-bottom:21px;
+  color:var(--orange);
+  font-size:clamp(23px,2.35vw,36px);
+  line-height:1;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+.split-heading h2::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:86px;
+  height:2px;
+  background:var(--orange);
+  transform:translateX(-50%)
+}
 .pillar{
-  padding:clamp(64px,7vw,100px);
-  min-height:560px;
+  position:relative;
+  padding:clamp(46px,5.5vw,88px);
+  padding-top:36px;
+  min-height:550px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between
+  justify-content:space-between;
+  background:transparent
 }
-.pillar:first-child{
-  background:linear-gradient(145deg,#0f171e,#0b1218);
+.pillar#autodoprava{
   border-right:1px solid var(--line)
 }
-.pillar:last-child{background:linear-gradient(145deg,#111a22,#0c1319)}
 .pillar-number{
-  font-size:12px;
-  letter-spacing:.25em;
-  color:#77818b;
+  font-size:16px;
+  letter-spacing:.19em;
+  color:var(--orange);
   font-weight:800
 }
 .pillar h2{
   margin:22px 0 14px;
-  font-size:clamp(40px,4vw,62px);
-  line-height:1;
+  font-size:clamp(34px,3.15vw,50px);
+  line-height:1.05;
   letter-spacing:-.045em
 }
 .pillar p{max-width:540px;color:var(--muted);font-size:16px}
@@ -483,60 +506,104 @@ img{display:block;max-width:100%}
   font-size:14px;
   color:#dfe3e7
 }
-.feature-list li::before{content:"→";color:#7f8993}
+.feature-list li::before{content:"→";color:var(--orange)}
+.pillar .pillar-brands{
+  width:max-content;
+  max-width:100%;
+  margin:24px 0 0;
+  padding:11px 15px;
+  border-left:3px solid var(--orange);
+  background:rgba(239,123,16,.025);
+  color:#e9edf0;
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.035em
+}
 .pillar-link{
   margin-top:38px;
   display:inline-flex;
   width:max-content;
+  min-height:50px;
+  align-items:center;
+  justify-content:center;
   gap:10px;
+  padding:0 23px;
+  color:#11171d;
+  background:var(--orange);
+  border:1px solid var(--orange);
+  border-radius:4px;
   font-size:13px;
   font-weight:800;
-  border-bottom:1px solid rgba(255,255,255,.35);
-  padding-bottom:5px
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  box-shadow:0 8px 22px rgba(239,123,16,.13);
+  transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease
+}
+.pillar-link:hover,
+.pillar-link:focus-visible{
+  background:#ff8a1d;
+  box-shadow:0 12px 30px rgba(239,123,16,.28);
+  transform:translateY(-2px)
 }
 
-.services{padding:110px 0;background:#0b1117}
-.services-head{
-  display:flex;
-  justify-content:space-between;
-  gap:40px;
-  align-items:end;
-  margin-bottom:48px
+.about{
+  padding:105px 0 115px;
+  background:linear-gradient(145deg,#0d151c,#091017 58%,#0d151c);
+  border-bottom:1px solid var(--line)
 }
-.service-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border:1px solid var(--line);
-  border-radius:12px;
-  overflow:hidden
-}
-.service-card{
-  min-height:310px;
-  padding:30px;
-  display:flex;
-  flex-direction:column;
-  border-right:1px solid var(--line);
-  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008))
-}
-.service-card:last-child{border-right:0}
-.service-card .num{color:#6f7982;font-size:12px;font-weight:800;letter-spacing:.22em}
-.service-card h3{margin:70px 0 12px;font-size:24px;line-height:1.08;letter-spacing:-.025em}
-.service-card p{margin:0;color:var(--muted);font-size:14px}
-.brands{margin-top:20px;color:#e5e7e9;font-size:12px;font-weight:700;line-height:1.8}
-
-.about{padding:115px 0;background:linear-gradient(180deg,#101820,#0c1319)}
 .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;align-items:start}
-.stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.stat{padding:32px;border-right:1px solid var(--line)}
+.about .eyebrow{color:var(--orange);font-size:13px}
+.stats{
+  display:grid;
+  grid-template-columns:1fr;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  background:rgba(255,255,255,.012)
+}
+.stat{
+  position:relative;
+  padding:34px 30px;
+  border-right:1px solid var(--line)
+}
+.stat::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:3px;
+  background:var(--orange);
+  opacity:.65
+}
 .stat:last-child{border-right:0}
-.stat strong{display:block;font-size:48px;line-height:1;letter-spacing:-.05em}
-.stat span{display:block;margin-top:10px;color:var(--muted);font-size:13px}
-.about-copy h2{margin:0;font-size:clamp(38px,4vw,62px);line-height:1.02;letter-spacing:-.045em}
-.about-copy p{color:var(--muted);font-size:16px;max-width:690px}
-.direct{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
-.direct article{padding:24px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.02)}
-.direct h3{margin:0 0 8px;font-size:18px}
-.direct p{margin:0;font-size:14px}
+.stat strong{
+  display:block;
+  color:var(--orange);
+  font-size:56px;
+  font-weight:850;
+  line-height:1;
+  letter-spacing:-.05em
+}
+.stat span{display:block;margin-top:12px;color:#c5ccd2;font-size:13px;line-height:1.45}
+.about-copy h2{
+  position:relative;
+  margin:0 0 25px;
+  padding-bottom:23px;
+  font-size:clamp(36px,3.5vw,54px);
+  line-height:1.04;
+  letter-spacing:-.045em
+}
+.about-copy h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:72px;
+  height:2px;
+  background:var(--orange)
+}
+.about-copy p{color:var(--muted);font-size:16px;line-height:1.75;max-width:690px}
 
 .reviews{padding:95px 0;background:#0a1015;border-top:1px solid var(--line)}
 .reviews-box{
@@ -602,12 +669,9 @@ footer{
   .portfolio-card{height:300px;min-height:0}
   .portfolio-card img{height:100%}
   .split{grid-template-columns:1fr}
-  .pillar:first-child{border-right:0;border-bottom:1px solid var(--line)}
-  .service-grid{grid-template-columns:1fr 1fr}
-  .service-card:nth-child(2){border-right:0}
-  .service-card:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .split-heading{grid-column:1;padding:46px 24px 18px}
+  .pillar#autodoprava{border-right:0;border-bottom:1px solid var(--line)}
   .about-grid,.contact-grid{grid-template-columns:1fr;gap:50px}
-  .services-head{display:block}
   .reviews-box{align-items:flex-start;flex-direction:column}
 }
 
@@ -640,12 +704,12 @@ footer{
   .portfolio-card{height:260px;min-height:0}
   .portfolio-card img{height:100%}
 
-  .pillar{padding:58px 24px;min-height:auto}
-  .service-grid{grid-template-columns:1fr}
-  .service-card,.service-card:nth-child(2){border-right:0;border-bottom:1px solid var(--line)}
-  .service-card:last-child{border-bottom:0}
-  .service-card h3{margin-top:38px}
-  .stats,.direct{grid-template-columns:1fr}
+  .split-heading{padding:40px 20px 12px}
+  .split-heading h2{font-size:clamp(22px,6.7vw,29px);letter-spacing:.075em;line-height:1.14}
+  .pillar{padding:44px 24px 52px;min-height:auto}
+  .pillar-number{font-size:14px;letter-spacing:.14em}
+  .pillar h2{font-size:clamp(31px,9.5vw,42px)}
+  .pillar-link{width:100%;margin-top:34px}
   .stat{border-right:0;border-bottom:1px solid var(--line)}
   .stat:last-child{border-bottom:0}
   .reviews-box{padding:30px 24px}
@@ -657,7 +721,7 @@ footer{
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Autodoprava & Servis František Adámek","telephone":"+420608963545","foundingDate":"2001","address":{"@type":"PostalAddress","streetAddress":"K Panelárně","addressLocality":"Otovice","postalCode":"360 01","addressCountry":"CZ"},"url":"https://mnanalysiscz-collab.github.io/FAdamekAutodopravaService/","description":"Autodoprava, servis nákladních vozidel a autobusů, opravy převodovek a diferenciálů, nadrozměrná přeprava a vyprošťovací technika."}</script>
 </head>
 <body>
-<header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="#specializace">Specializace</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div></header>
+<header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div></header>
 <main>
 <section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="IMG_8736.jpeg" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="IMG_8735.jpeg" alt="Servis F. Adámek – přeprava těžké techniky"></div></div></section>
 <section class="hero-quicklinks" aria-label="Rychlé odkazy">
@@ -711,9 +775,12 @@ footer{
   </div>
 </section>
 
-<section class="split"><article class="pillar" id="autodoprava"><div><span class="pillar-number">01 / AUTODOPRAVA</span><h2>Od sypkých materiálů po nadrozměr.</h2><p>Zajišťujeme přepravu kameniva, písku, obilí a dalších sypkých materiálů. Pracujeme se sklápěcími návěsy a řešíme také nadrozměrnou přepravu.</p><ul class="feature-list"><li>Sypké materiály, kamenivo, písek a obilí</li><li>Sklápěcí návěsy</li><li>Nadrozměrná přeprava</li><li>Vyprošťovací technika</li></ul></div><a class="pillar-link" href="#kontakt">Poptat dopravu →</a></article><article class="pillar" id="servis"><div><span class="pillar-number">02 / SERVIS</span><h2>Servis, který má stejnou váhu jako doprava.</h2><p>Provádíme běžné i specializované opravy nákladních vozidel a autobusů. Servis není doplněk autodopravy – je plnohodnotnou částí firmy.</p><ul class="feature-list"><li>Běžné opravy nákladních vozidel</li><li>Servis a opravy autobusů</li><li>Opravy převodovek</li><li>Opravy diferenciálů</li></ul></div><a class="pillar-link" href="#kontakt">Objednat servis →</a></article></section>
-<section class="services" id="specializace"><div class="container"><div class="services-head"><div><p class="eyebrow">Co děláme</p><h2 class="section-title">Technika na cestě i v dílně.</h2></div><p class="section-lead">Od přepravy materiálu přes běžný servis až po specializované opravy převodovek a diferenciálů.</p></div><div class="service-grid"><article class="service-card"><span class="num">01</span><h3>Autodoprava</h3><p>Sypké materiály, kamenivo, písek, obilí, sklápěcí návěsy a nadrozměrná přeprava.</p></article><article class="service-card"><span class="num">02</span><h3>Servis nákladních vozidel</h3><p>Běžné opravy a údržba nákladních vozidel i autobusů.</p></article><article class="service-card"><span class="num">03</span><h3>Převodovky & diferenciály</h3><p>Specializované opravy převodovek a diferenciálů nákladních vozidel a autobusů.</p><div class="brands">ZF · Volvo · Scania · Mercedes-Benz · Eaton</div></article><article class="service-card"><span class="num">04</span><h3>Vyprošťovací technika</h3><p>Pomoc při problémech s těžkou technikou a vyproštění nákladních vozidel.</p></article></div></div></section>
-<section class="about" id="o-nas"><div class="container about-grid"><div><p class="eyebrow">Od roku 2001</p><div class="stats"><div class="stat"><strong>25+</strong><span>let zkušeností v dopravě a servisu</span></div><div class="stat"><strong>2</strong><span>rovnocenné pilíře: autodoprava & servis</span></div></div></div><div class="about-copy"><h2>Firma, za kterou stojí konkrétní člověk.</h2><p>Přes 20 let jezdíme s nákladní technikou a zároveň provozujeme vlastní servis. Díky tomu máme bohaté zkušenosti z každodenního provozu na silnici i z oprav v dílně.</p><p>Firmu vlastní a osobně vede František Adámek. Když řešíte přepravu nebo servis, komunikujete přímo s lidmi, kteří mají práci skutečně na starosti.</p><div class="direct"><article><h3>Přímo s majitelem</h3><p>Rychlá domluva a rozhodování bez zbytečného předávání mezi odděleními.</p></article><article><h3>Zkušenosti od roku 2001</h3><p>Dlouholetá praxe s nákladní dopravou, vozidly, servisem a těžkou technikou.</p></article></div></div></div></section>
+<section class="split" aria-labelledby="pillars-title">
+  <div class="split-heading"><h2 id="pillars-title">Dva pilíře. Jedna firma.</h2></div>
+  <article class="pillar" id="autodoprava"><div><span class="pillar-number">01 / AUTODOPRAVA</span><h2>Od sypkých materiálů po nadrozměr.</h2><p>Zajišťujeme nákladní přepravu od sypkých materiálů, kameniva, písku a obilí přes dřevo a kulatinu až po nadrozměrné náklady, stavební, těžkou a vojenskou techniku. Součástí našich služeb je také vyprošťování nákladních vozidel a těžké techniky.</p><ul class="feature-list"><li>Sypké materiály, kamenivo, písek a obilí</li><li>Sklápěcí návěsy</li><li>Nadrozměrná přeprava</li><li>Vyprošťovací technika</li></ul></div><a class="pillar-link" href="#kontakt">Poptat dopravu →</a></article>
+  <article class="pillar" id="servis"><div><span class="pillar-number">02 / SERVIS</span><h2>Od běžného servisu po specializované opravy.</h2><p>Provádíme servis a opravy nákladních vozidel, autobusů, těžké i vojenské techniky. Od běžné údržby a menších oprav až po specializované opravy převodovek a diferenciálů.</p><ul class="feature-list"><li>Běžné opravy nákladních vozidel</li><li>Servis a opravy autobusů</li><li>Opravy převodovek</li><li>Opravy diferenciálů</li></ul><p class="pillar-brands">ZF · Volvo · Scania · Mercedes-Benz · Eaton</p></div><a class="pillar-link" href="#kontakt">Objednat servis →</a></article>
+</section>
+<section class="about" id="o-nas"><div class="container about-grid"><div><p class="eyebrow">Od roku 2001</p><div class="stats"><div class="stat"><strong>20</strong><span>let zkušeností v dopravě a servisu</span></div></div></div><div class="about-copy"><h2>Firma, za kterou stojí konkrétní člověk.</h2><p>Přes 20 let spojujeme nákladní dopravu se servisem. Techniku nejen opravujeme, ale dobře ji známe také z každodenního provozu na silnici. Víme, jakému zatížení vozidla čelí a co je potřeba k tomu, aby mohla spolehlivě dál pracovat.</p><p>Firmu vlastní a osobně vede František Adámek. Když se na nás obrátíte kvůli dopravě nebo servisu, jednáte přímo s člověkem, který se vaší zakázce skutečně věnuje. Domluva je tak rychlá, konkrétní a bez zbytečných mezičlánků.</p></div></div></section>
 <section class="reviews"><div class="container"><div class="reviews-box"><div><p class="eyebrow">Recenze</p><h2>Zkušenosti našich zákazníků najdete na Googlu.</h2><p>Recenze necháváme tam, kde je zákazníci skutečně píšou. Na web později můžeme doplnit ověřené reference přímo z firemního Google profilu.</p></div><a class="btn btn-secondary" target="_blank" rel="noopener" href="https://www.google.com/search?q=Autodoprava+a+autoservis+F.+Ad%C3%A1mek+Recenze">Zobrazit Google recenze →</a></div></div></section>
 <section class="contact" id="kontakt"><div class="container contact-grid"><div><p class="eyebrow">Kontakt</p><h2>Potřebujete dopravu nebo servis?</h2><p class="section-lead">Zavolejte přímo. Domluvíme přepravu, termín opravy nebo další postup.</p><div class="contact-list"><div class="contact-row"><span>Telefon</span><a href="tel:+420608963545">+420 608 963 545</a></div><div class="contact-row"><span>Provozovna</span><address>K Panelárně, Otovice, 360 01</address></div><div class="contact-row"><span>Firma</span><div>Autodoprava & Servis František Adámek</div></div></div></div><aside class="contact-card"><img src="logo.png" alt="F. Adámek – logo"><p>Autodoprava a servis nákladních vozidel a autobusů pod jednou střechou. Od roku 2001.</p><a class="btn btn-primary" href="tel:+420608963545">Zavolat +420 608 963 545</a></aside></div></section>
 </main>
