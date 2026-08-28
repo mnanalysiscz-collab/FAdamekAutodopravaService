@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Galerie Autodoprava & Servis František Adámek – naše technika, autodoprava a servis v praxi." />
+  <meta name="theme-color" content="#090e13" />
+  <title>Galerie | Autodoprava & Servis František Adámek</title>
+  <style>
+    :root{--bg:#090e13;--bg2:#0d141b;--text:#f7f7f7;--muted:#aeb7c0;--line:rgba(255,255,255,.10);--orange:#ef7b10;--max:1500px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);background:linear-gradient(145deg,#0d151c,#090e13 58%,#0d151c);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+
+    .site-header{position:relative;height:80px;z-index:20;background:#090e13;border-bottom:1px solid var(--line)}
+    .nav{height:80px;display:grid;grid-template-columns:260px 1fr 190px;align-items:center;gap:28px}
+    .site-header .container{width:100%;max-width:none;padding-left:18px;padding-right:18px}
+    .brand{display:block;justify-self:start}
+    .brand img{width:270px;max-height:68px;object-fit:contain;object-position:left center;opacity:.96}
+    .nav-links{display:flex;justify-content:center;align-items:center;gap:30px;font-size:13px;font-weight:700}
+    .nav-links a{color:rgba(255,255,255,.86);padding:28px 0;position:relative}
+    .nav-links a:hover{color:#fff}
+    .nav-links a.active{color:#fff}
+    .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:19px;height:2px;background:var(--orange)}
+    .phone{justify-self:end;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;padding:0 15px;border:1px solid rgba(239,123,16,.60);border-radius:5px;background:rgba(5,10,15,.28);color:#fff;font-size:13px;font-weight:850;white-space:nowrap}
+    .phone svg{width:14px;height:14px;stroke:#fff}
+
+    .gallery-hero{padding:76px 0 40px;text-align:center}
+    .eyebrow{margin:0 0 12px;color:var(--orange);font-size:11px;font-weight:800;letter-spacing:.34em;text-transform:uppercase}
+    .gallery-hero h1{margin:0;font-size:clamp(42px,5.6vw,82px);line-height:.98;letter-spacing:-.055em}
+    .gallery-hero p{margin:20px auto 0;max-width:680px;color:var(--muted);font-size:16px}
+    .gallery-line{width:72px;height:2px;margin:25px auto 0;background:var(--orange)}
+
+    .gallery-section{padding:20px 0 90px}
+    .gallery-grid{columns:3;column-gap:14px}
+    .gallery-item{position:relative;display:block;width:100%;margin:0 0 14px;padding:0;appearance:none;-webkit-appearance:none;color:inherit;font:inherit;break-inside:avoid;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:7px;background:#10161b;cursor:zoom-in}
+    .gallery-item img{width:100%;height:auto;transition:transform .35s ease,filter .35s ease}
+    .gallery-item::after{content:"+";position:absolute;right:16px;bottom:14px;width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:rgba(5,10,15,.58);color:#fff;font-size:22px;font-weight:300;opacity:0;transform:translateY(6px);transition:.25s ease}
+    .gallery-item:hover img{transform:scale(1.015);filter:brightness(.82)}
+    .gallery-item:hover::after{opacity:1;transform:none}
+
+    .back-link{display:flex;justify-content:center;padding:0 0 80px}
+    .back-link a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border:1px solid rgba(255,255,255,.22);border-radius:5px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;transition:.2s ease}
+    .back-link a:hover{border-color:var(--orange);color:#ffd1a1;transform:translateY(-1px)}
+
+    footer{padding:28px 0;background:#080d11;border-top:1px solid var(--line);color:#7e8892;font-size:12px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+
+    .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:34px;background:rgba(0,0,0,.94);backdrop-filter:blur(5px)}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:min(92vw,1500px);max-height:90vh;object-fit:contain;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+    .lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;border:1px solid rgba(255,255,255,.22);background:rgba(12,16,20,.62);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.2s ease}
+    .lightbox-close{top:20px;right:22px;width:46px;height:46px;border-radius:50%;font-size:27px}
+    .lightbox-prev,.lightbox-next{top:50%;width:50px;height:64px;transform:translateY(-50%);border-radius:5px;font-size:30px}
+    .lightbox-prev{left:22px}.lightbox-next{right:22px}
+    .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{border-color:var(--orange);color:#ffd1a1}
+    .lightbox-counter{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);color:#c8ced3;font-size:12px;letter-spacing:.12em}
+
+    @media(max-width:1050px){.nav{grid-template-columns:1fr auto}.nav-links{display:none}.gallery-grid{columns:2}}
+    @media(max-width:640px){
+      .container{width:min(var(--max),calc(100% - 30px))}
+      .site-header{height:74px}.nav{height:74px}.brand img{width:175px}.phone{font-size:0;padding:0 13px;min-height:39px}.phone svg{width:16px;height:16px}
+      .gallery-hero{padding:54px 0 30px}.gallery-grid{columns:1;column-gap:0}.gallery-item{margin-bottom:10px}.gallery-section{padding-top:8px}
+      .lightbox{padding:18px}.lightbox-prev,.lightbox-next{width:42px;height:54px}.lightbox-prev{left:8px}.lightbox-next{right:8px}.lightbox-close{top:10px;right:10px}
+      .footer-inner{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a>
+    <nav class="nav-links" aria-label="Hlavní navigace">
+      <a href="index.html#autodoprava">Autodoprava</a>
+      <a href="index.html#servis">Servis</a>
+      <a class="active" href="galerie.html">Galerie</a>
+      <a href="index.html#o-nas">O nás</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a>
+  </div>
+</header>
+
+<main>
+  <section class="gallery-hero">
+    <div class="container">
+      <p class="eyebrow">Autodoprava & servis</p>
+      <h1>Galerie</h1>
+      <div class="gallery-line"></div>
+      <p>Naše technika, přeprava a servis v praxi.</p>
+    </div>
+  </section>
+
+  <section class="gallery-section" aria-label="Fotogalerie">
+    <div class="container">
+      <div class="gallery-grid" id="galleryGrid">
+        <button class="gallery-item" type="button" data-src="j.png"><img src="j.png" loading="lazy" alt="Autodoprava a servis F. Adámek – fotografie z provozu"></button>
+        <button class="gallery-item" type="button" data-src="i.jpg"><img src="i.jpg" loading="lazy" alt="Technika F. Adámek v praxi"></button>
+        <button class="gallery-item" type="button" data-src="h.jpeg"><img src="h.jpeg" loading="lazy" alt="Servis a těžká technika F. Adámek"></button>
+        <button class="gallery-item" type="button" data-src="g.jpg"><img src="g.jpg" loading="lazy" alt="Autodoprava F. Adámek"></button>
+        <button class="gallery-item" type="button" data-src="f.jpg"><img src="f.jpg" loading="lazy" alt="Nákladní technika F. Adámek"></button>
+        <button class="gallery-item" type="button" data-src="e.jpg"><img src="e.jpg" loading="lazy" alt="Provoz a servis F. Adámek"></button>
+        <button class="gallery-item" type="button" data-src="c.JPG"><img src="c.JPG" loading="lazy" alt="Těžká technika F. Adámek"></button>
+        <button class="gallery-item" type="button" data-src="b.JPG"><img src="b.JPG" loading="lazy" alt="Přeprava a servis F. Adámek"></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="back-link"><a href="index.html">← Zpět na hlavní stránku</a></div>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Náhled fotografie">
+  <button class="lightbox-close" type="button" aria-label="Zavřít">×</button>
+  <button class="lightbox-prev" type="button" aria-label="Předchozí fotografie">‹</button>
+  <img id="lightboxImage" src="" alt="">
+  <button class="lightbox-next" type="button" aria-label="Další fotografie">›</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<footer><div class="container footer-inner"><span>© Autodoprava & Servis František Adámek</span><span>K Panelárně, Otovice 360 01</span></div></footer>
+
+<script>
+  const items=[...document.querySelectorAll('.gallery-item')];
+  const lightbox=document.getElementById('lightbox');
+  const lightboxImage=document.getElementById('lightboxImage');
+  const counter=document.getElementById('lightboxCounter');
+  let currentIndex=0;
+
+  function showImage(index){
+    currentIndex=(index+items.length)%items.length;
+    const img=items[currentIndex].querySelector('img');
+    lightboxImage.src=items[currentIndex].dataset.src;
+    lightboxImage.alt=img.alt;
+    counter.textContent=(currentIndex+1)+' / '+items.length;
+  }
+  function openLightbox(index){showImage(index);lightbox.classList.add('open');document.body.style.overflow='hidden'}
+  function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow=''}
+
+  items.forEach((item,index)=>item.addEventListener('click',()=>openLightbox(index)));
+  document.querySelector('.lightbox-close').addEventListener('click',closeLightbox);
+  document.querySelector('.lightbox-prev').addEventListener('click',()=>showImage(currentIndex-1));
+  document.querySelector('.lightbox-next').addEventListener('click',()=>showImage(currentIndex+1));
+  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
+  document.addEventListener('keydown',e=>{
+    if(!lightbox.classList.contains('open'))return;
+    if(e.key==='Escape')closeLightbox();
+    if(e.key==='ArrowLeft')showImage(currentIndex-1);
+    if(e.key==='ArrowRight')showImage(currentIndex+1);
+  });
+</script>
+</body>
+</html>
