@@ -1,0 +1,73 @@
+name: Optimize gallery images
+
+on:
+  push:
+    paths:
+      - '.github/workflows/optimize-gallery.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --quiet pillow
+
+      - name: Optimize gallery photos
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps
+
+          mapping = {
+              'j.png': 'j.webp',
+              'i.jpg': 'i.webp',
+              'h.jpeg': 'h.webp',
+              'g.jpg': 'g.webp',
+              'f.jpg': 'f.webp',
+              'e.jpg': 'e.webp',
+              'c.JPG': 'c.webp',
+              'b.JPG': 'b.webp',
+          }
+
+          out_dir = Path('gallery')
+          out_dir.mkdir(exist_ok=True)
+
+          for source, target in mapping.items():
+              image = Image.open(source)
+              image = ImageOps.exif_transpose(image)
+              image.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
+              if image.mode != 'RGB':
+                  image = image.convert('RGB')
+              image.save(out_dir / target, 'WEBP', quality=78, method=6)
+              print(source, '->', out_dir / target, image.size)
+
+          gallery_path = Path('galerie[1].html')
+          html = gallery_path.read_text(encoding='utf-8')
+          for source, target in mapping.items():
+              html = html.replace('"' + source + '"', '"gallery/' + target + '"')
+          html = html.replace('loading="lazy"', 'loading="lazy" decoding="async"')
+          gallery_path.write_text(html, encoding='utf-8')
+          PY
+
+      - name: Commit optimized gallery
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add gallery 'galerie[1].html'
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Use optimized WebP gallery images"
+          git push
