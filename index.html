@@ -773,6 +773,15 @@ img{display:block;max-width:100%}
   color:#11171d;
   transform:translateY(-1px)
 }
+.form-success{
+  margin:0 0 22px;
+  padding:15px 17px;
+  border:1px solid rgba(70,190,115,.35);
+  border-radius:6px;
+  background:rgba(70,190,115,.08);
+  color:#bce9ca;
+  font-size:14px
+}
 .form-note{margin:0;color:#818b95;font-size:11px;line-height:1.55}
 .form-note a{color:#e4e8eb;font-weight:800;text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}
 
@@ -956,11 +965,17 @@ footer{
           <p>Vyberte, co potřebujete, a stručně popište svou poptávku.</p>
         </div>
 
-        <form class="contact-form" id="contact-form">
+        <p class="form-success" id="form-success" hidden>Děkujeme. Vaše poptávka byla úspěšně odeslána.</p>
+
+        <form class="contact-form" id="contact-form" action="https://formsubmit.co/fadamekautodoprava@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nová poptávka z webu F. Adámek">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://mnanalysiscz-collab.github.io/FAdamekAutodopravaService/?odeslano=1#kontakt">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
           <div class="form-grid">
             <div class="form-field full">
               <label for="interest">Mám zájem o</label>
-              <select id="interest" name="interest" required>
+              <select id="interest" name="Typ poptávky" required>
                 <option value="" selected disabled>Vyberte službu</option>
                 <option value="Servis">Servis vozidel</option>
                 <option value="Autodoprava">Autodopravu</option>
@@ -969,12 +984,12 @@ footer{
 
             <div class="form-field">
               <label for="name">Jméno nebo firma</label>
-              <input id="name" name="name" type="text" autocomplete="name" placeholder="Vaše jméno" required>
+              <input id="name" name="Jméno nebo firma" type="text" autocomplete="name" placeholder="Vaše jméno" required>
             </div>
 
             <div class="form-field">
               <label for="phone-contact">Telefon</label>
-              <input id="phone-contact" name="phone" type="tel" autocomplete="tel" placeholder="+420" required>
+              <input id="phone-contact" name="Telefon" type="tel" autocomplete="tel" placeholder="+420" required>
             </div>
 
             <div class="form-field full">
@@ -984,12 +999,12 @@ footer{
 
             <div class="form-field full">
               <label for="message">Co potřebujete?</label>
-              <textarea id="message" name="message" placeholder="Stručně popište přepravu nebo požadovaný servis…" required></textarea>
+              <textarea id="message" name="Zpráva" placeholder="Stručně popište přepravu nebo požadovaný servis…" required></textarea>
             </div>
           </div>
 
           <button class="form-submit" type="submit">Odeslat e-mail →</button>
-          <p class="form-note">Po kliknutí se otevře vaše e-mailová aplikace a zprávu můžete rovnou odeslat. Osobní údaje neposíláme přes žádnou další službu. Pokud spěcháte, nejrychlejší je <a href="tel:+420608963545">zavolat na +420 608 963 545</a>.</p>
+          <p class="form-note">Po odeslání přijde poptávka přímo na náš firemní e-mail. Uvedené údaje použijeme pouze pro vyřízení vaší poptávky. Pokud spěcháte, nejrychlejší je <a href="tel:+420608963545">zavolat na +420 608 963 545</a>.</p>
         </form>
       </div>
     </div>
@@ -999,35 +1014,10 @@ footer{
 <footer><div class="container footer-inner"><span>© Autodoprava & Servis František Adámek</span><span>K Panelárně, Otovice 360 01</span></div></footer>
 
 <script>
-  const contactForm = document.getElementById("contact-form");
-
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const interest = document.getElementById("interest").value;
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone-contact").value.trim();
-      const email = document.getElementById("email-contact").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      const subject = "Poptávka z webu – " + interest;
-      const body = [
-        "Typ poptávky: " + interest,
-        "Jméno / firma: " + name,
-        "Telefon: " + phone,
-        "E-mail: " + (email || "neuveden"),
-        "",
-        "Zpráva:",
-        message
-      ].join("\n");
-
-      window.location.href =
-        "mailto:fadamekautodoprava@gmail.com?subject=" +
-        encodeURIComponent(subject) +
-        "&body=" +
-        encodeURIComponent(body);
-    });
+  const contactParams = new URLSearchParams(window.location.search);
+  if (contactParams.get("odeslano") === "1") {
+    const successMessage = document.getElementById("form-success");
+    if (successMessage) successMessage.hidden = false;
   }
 </script>
 </body>
