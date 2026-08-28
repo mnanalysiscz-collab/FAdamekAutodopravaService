@@ -652,7 +652,7 @@ img{display:block;max-width:100%}
   margin:0 0 32px;
   object-fit:contain;
   object-position:left center;
-  filter:brightness(0) saturate(100%) invert(54%) sepia(91%) saturate(2018%) hue-rotate(354deg) brightness(98%) contrast(91%)
+  filter:none
 }
 .call-kicker{
   color:var(--orange);
@@ -926,7 +926,7 @@ footer{
 
     <div class="contact-grid">
       <aside class="contact-card">
-        <img src="logo.png" alt="F. Adámek – Autodoprava & servis">
+        <img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis">
         <span class="call-kicker">Nejrychlejší domluva</span>
         <h3>Zavolejte nám přímo</h3>
         <a class="contact-phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545">+420 608 963 545</a>
@@ -943,7 +943,7 @@ footer{
           </div>
           <div class="contact-row">
             <span>E-mail</span>
-            <a href="mailto:mnanalysis.cz@gmail.com">mnanalysis.cz@gmail.com</a>
+            <a href="mailto:fadamekautodoprava@gmail.com">fadamekautodoprava@gmail.com</a>
           </div>
         </div>
       </aside>
@@ -986,8 +986,8 @@ footer{
             </div>
           </div>
 
-          <button class="form-submit" type="submit">Připravit e-mail →</button>
-          <p class="form-note">Po kliknutí se otevře vaše e-mailová aplikace s připravenou zprávou. Osobní údaje neposíláme přes žádnou další službu. Pokud spěcháte, nejrychlejší je <a href="tel:+420608963545">zavolat na +420 608 963 545</a>.</p>
+          <button class="form-submit" type="submit">Odeslat e-mail →</button>
+          <p class="form-note">Po kliknutí se otevře vaše e-mailová aplikace a zprávu můžete rovnou odeslat. Osobní údaje neposíláme přes žádnou další službu. Pokud spěcháte, nejrychlejší je <a href="tel:+420608963545">zavolat na +420 608 963 545</a>.</p>
         </form>
       </div>
     </div>
@@ -1021,7 +1021,7 @@ footer{
       ].join("\n");
 
       window.location.href =
-        "mailto:mnanalysis.cz@gmail.com?subject=" +
+        "mailto:fadamekautodoprava@gmail.com?subject=" +
         encodeURIComponent(subject) +
         "&body=" +
         encodeURIComponent(body);
