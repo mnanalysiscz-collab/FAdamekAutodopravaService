@@ -135,6 +135,34 @@ img{display:block;max-width:100%}
 .phone{color:#fff;border-color:rgba(239,123,16,.60)}
 .phone svg{width:14px;height:14px;stroke:#fff}
 
+.menu-toggle{
+  display:none;
+  width:42px;
+  height:42px;
+  padding:0;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+  border:1px solid rgba(239,123,16,.62);
+  border-radius:5px;
+  background:rgba(5,10,15,.52);
+  color:#fff;
+  cursor:pointer
+}
+.menu-toggle span{
+  display:block;
+  width:19px;
+  height:2px;
+  border-radius:2px;
+  background:currentColor;
+  transition:transform .2s ease,opacity .2s ease
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none}
+
 /* Hero */
 .hero{
   position:relative;
@@ -805,8 +833,31 @@ footer{
 }
 
 @media(max-width:1050px){
-  .nav{grid-template-columns:1fr auto}
+  .nav{grid-template-columns:1fr auto auto;gap:12px}
   .nav-links{display:none}
+  .menu-toggle{display:inline-flex;justify-self:end}
+  .mobile-menu{
+    position:absolute;
+    top:80px;
+    right:18px;
+    width:min(310px,calc(100% - 36px));
+    padding:8px;
+    border:1px solid rgba(239,123,16,.55);
+    border-radius:7px;
+    background:rgba(9,14,19,.98);
+    box-shadow:0 20px 48px rgba(0,0,0,.48);
+    backdrop-filter:blur(12px)
+  }
+  .mobile-menu.open{display:grid}
+  .mobile-menu a{
+    padding:12px 14px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:#f4f4f4;
+    font-size:13px;
+    font-weight:750
+  }
+  .mobile-menu a:last-child{border-bottom:0}
+  .mobile-menu a:hover,.mobile-menu a:focus-visible{color:#ffd1a1;background:rgba(239,123,16,.08)}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
   .portfolio-card{height:300px;min-height:0}
   .portfolio-card img{height:100%}
@@ -820,24 +871,29 @@ footer{
   .container{width:min(var(--max),calc(100% - 30px))}
   .site-header{height:74px}
   .nav{height:74px;min-height:74px}
-  .brand img{width:175px}
-  .phone{font-size:0;padding:0 13px;min-height:39px}
+  .brand img{width:155px}
+  .nav{gap:8px}
+  .phone{font-size:0;padding:0 11px;min-height:39px}
   .phone svg{width:16px;height:16px}
+  .menu-toggle{width:39px;height:39px}
+  .mobile-menu{top:74px;right:15px;width:calc(100% - 30px)}
 
-  .hero{height:auto;min-height:720px}
-  .hero-split{position:relative;inset:auto;grid-template-columns:1fr;height:720px;z-index:0}
-  .hero-half{height:360px}
+  .hero{height:auto;min-height:440px}
+  .hero-split{position:relative;inset:auto;grid-template-columns:1fr;height:440px;z-index:0}
+  .hero-half{height:220px}
   .hero::after{display:none}
   .hero-side-label{width:100%;transform:none}
-  .hero-side-label.left{left:0;top:278px;bottom:auto}
-  .hero-side-label.right{right:0;top:638px;bottom:auto}
+  .hero-side-label.left{left:0;top:178px;bottom:auto}
+  .hero-side-label.right{right:0;top:398px;bottom:auto}
   .hero-side-label strong{font-size:27px}
   .hero-side-label a{font-size:9px}
-  .hero-quicklinks{grid-template-columns:1fr 1fr;padding:7px 12px 9px}
+  .hero-quicklinks{grid-template-columns:1fr 1fr;padding:4px 12px 6px}
   .hero-quicklinks a{font-size:10px;padding:7px 0 5px}
   .hero-quicklinks a:first-child{grid-column:1;grid-row:2}
   .hero-quicklinks a:last-child{grid-column:2;grid-row:2}
-  .quicklinks-experience{grid-column:1 / -1;grid-row:1;padding:2px 8px 4px}
+  .quicklinks-experience{grid-column:1 / -1;grid-row:1;padding:1px 8px 3px}
+  .quicklinks-experience strong{font-size:12.5px}
+  .quicklinks-experience span{font-size:11.5px}
 
   .portfolio-showcase{padding:8px 0 20px}
   .portfolio-showcase .container{width:min(var(--max),calc(100% - 30px))}
@@ -867,7 +923,7 @@ footer{
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Autodoprava & Servis František Adámek","telephone":"+420608963545","foundingDate":"2001","address":{"@type":"PostalAddress","streetAddress":"K Panelárně","addressLocality":"Otovice","postalCode":"360 01","addressCountry":"CZ"},"url":"https://mnanalysiscz-collab.github.io/FAdamekAutodopravaService/","description":"Autodoprava, servis nákladních vozidel a autobusů, opravy převodovek a diferenciálů, nadrozměrná přeprava a vyprošťovací technika."}</script>
 </head>
 <body>
-<header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="galerie[1].html">Galerie</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div></header>
+<header class="site-header"><div class="container nav"><a class="brand" href="#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a><nav class="nav-links" aria-label="Hlavní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="galerie[1].html">Galerie</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav><button class="menu-toggle" type="button" aria-label="Otevřít menu" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span><span></span></button><a class="phone" href="tel:+420608963545" aria-label="Zavolat na +420 608 963 545"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>+420 608 963 545</a></div><nav class="mobile-menu" id="mobile-menu" aria-label="Mobilní navigace"><a href="#autodoprava">Autodoprava</a><a href="#servis">Servis</a><a href="galerie[1].html">Galerie</a><a href="#o-nas">O nás</a><a href="#kontakt">Kontakt</a></nav></header>
 <main>
 <section class="hero" id="top"><div class="hero-split"><div class="hero-half hero-left"><img src="IMG_8736.jpeg" alt="Autodoprava F. Adámek"></div><div class="hero-half hero-right"><img src="hero-tank-adamek.webp" alt="Servis F. Adámek – přeprava těžké techniky"></div></div></section>
 <section class="hero-quicklinks" aria-label="Rychlé odkazy">
@@ -1014,6 +1070,36 @@ footer{
 <footer><div class="container footer-inner"><span>© Autodoprava & Servis František Adámek</span><span>K Panelárně, Otovice 360 01</span></div></footer>
 
 <script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  function closeMobileMenu() {
+    if (!menuToggle || !mobileMenu) return;
+    mobileMenu.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Otevřít menu");
+  }
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", () => {
+      const willOpen = !mobileMenu.classList.contains("open");
+      mobileMenu.classList.toggle("open", willOpen);
+      menuToggle.setAttribute("aria-expanded", String(willOpen));
+      menuToggle.setAttribute("aria-label", willOpen ? "Zavřít menu" : "Otevřít menu");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMobileMenu));
+
+    document.addEventListener("click", event => {
+      if (!mobileMenu.classList.contains("open")) return;
+      if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) closeMobileMenu();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMobileMenu();
+    });
+  }
+
   const contactParams = new URLSearchParams(window.location.search);
   if (contactParams.get("odeslano") === "1") {
     const successMessage = document.getElementById("form-success");
