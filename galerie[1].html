@@ -35,6 +35,7 @@
     .gallery-line{width:72px;height:2px;margin:25px auto 0;background:var(--orange)}
 
     .gallery-section{padding:20px 0 90px}
+    .gallery-section .container{width:min(1180px,calc(100% - 48px))}
     .gallery-grid{
       position:relative;
       columns:2;
@@ -80,7 +81,7 @@
     @media(max-width:640px){
       .container{width:min(var(--max),calc(100% - 30px))}
       .site-header{height:74px}.nav{height:74px}.brand img{width:175px}.phone{font-size:0;padding:0 13px;min-height:39px}.phone svg{width:16px;height:16px}
-      .gallery-hero{padding:54px 0 30px}.gallery-grid{columns:1;column-gap:0;column-rule:0;padding-left:14px;border-left:3px solid var(--orange)}.gallery-grid::after{display:none}.gallery-item{margin-bottom:10px}.gallery-section{padding-top:8px}
+      .gallery-hero{padding:54px 0 30px}.gallery-section .container{width:min(1180px,calc(100% - 30px))}.gallery-grid{columns:1;column-gap:0;column-rule:0;padding-left:14px;border-left:3px solid var(--orange)}.gallery-grid::after{display:none}.gallery-item{margin-bottom:10px}.gallery-section{padding-top:8px}
       .lightbox{padding:18px}.lightbox-prev,.lightbox-next{width:42px;height:54px}.lightbox-prev{left:8px}.lightbox-next{right:8px}.lightbox-close{top:10px;right:10px}
       .footer-inner{flex-direction:column}
     }
