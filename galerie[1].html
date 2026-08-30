@@ -35,8 +35,25 @@
     .gallery-line{width:72px;height:2px;margin:25px auto 0;background:var(--orange)}
 
     .gallery-section{padding:20px 0 90px}
-    .gallery-grid{columns:3;column-gap:14px}
-    .gallery-item{position:relative;display:block;width:100%;margin:0 0 14px;padding:0;appearance:none;-webkit-appearance:none;color:inherit;font:inherit;break-inside:avoid;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:7px;background:#10161b;cursor:zoom-in}
+    .gallery-grid{
+      position:relative;
+      columns:2;
+      column-gap:46px;
+      column-rule:3px solid var(--orange)
+    }
+    .gallery-grid::after{
+      content:"";
+      position:absolute;
+      z-index:2;
+      left:50%;
+      top:36px;
+      bottom:36px;
+      width:16px;
+      transform:translateX(-50%);
+      background:radial-gradient(circle at center,var(--orange) 0 5px,#090e13 5.5px 8px,transparent 8.5px) center top/16px 180px repeat-y;
+      pointer-events:none
+    }
+    .gallery-item{position:relative;display:block;width:100%;margin:0 0 16px;padding:0;appearance:none;-webkit-appearance:none;color:inherit;font:inherit;break-inside:avoid;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:7px;background:#10161b;cursor:zoom-in}
     .gallery-item img{width:100%;height:auto;transition:transform .35s ease,filter .35s ease}
     .gallery-item::after{content:"+";position:absolute;right:16px;bottom:14px;width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:rgba(5,10,15,.58);color:#fff;font-size:22px;font-weight:300;opacity:0;transform:translateY(6px);transition:.25s ease}
     .gallery-item:hover img{transform:scale(1.015);filter:brightness(.82)}
@@ -59,11 +76,11 @@
     .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{border-color:var(--orange);color:#ffd1a1}
     .lightbox-counter{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);color:#c8ced3;font-size:12px;letter-spacing:.12em}
 
-    @media(max-width:1050px){.nav{grid-template-columns:1fr auto}.nav-links{display:none}.gallery-grid{columns:2}}
+    @media(max-width:1050px){.nav{grid-template-columns:1fr auto}.nav-links{display:none}.gallery-grid{column-gap:34px}}
     @media(max-width:640px){
       .container{width:min(var(--max),calc(100% - 30px))}
       .site-header{height:74px}.nav{height:74px}.brand img{width:175px}.phone{font-size:0;padding:0 13px;min-height:39px}.phone svg{width:16px;height:16px}
-      .gallery-hero{padding:54px 0 30px}.gallery-grid{columns:1;column-gap:0}.gallery-item{margin-bottom:10px}.gallery-section{padding-top:8px}
+      .gallery-hero{padding:54px 0 30px}.gallery-grid{columns:1;column-gap:0;column-rule:0;padding-left:14px;border-left:3px solid var(--orange)}.gallery-grid::after{display:none}.gallery-item{margin-bottom:10px}.gallery-section{padding-top:8px}
       .lightbox{padding:18px}.lightbox-prev,.lightbox-next{width:42px;height:54px}.lightbox-prev{left:8px}.lightbox-next{right:8px}.lightbox-close{top:10px;right:10px}
       .footer-inner{flex-direction:column}
     }
@@ -97,6 +114,7 @@
   <section class="gallery-section" aria-label="Fotogalerie">
     <div class="container">
       <div class="gallery-grid" id="galleryGrid">
+        <button class="gallery-item" type="button" data-src="gallery/man-predek.webp"><img src="gallery/man-predek.webp" loading="lazy" decoding="async" alt="MAN F. Adámek – čelní pohled"></button>
         <button class="gallery-item" type="button" data-src="gallery/j.webp"><img src="gallery/j.webp" loading="lazy" decoding="async" alt="Autodoprava a servis F. Adámek – fotografie z provozu"></button>
         <button class="gallery-item" type="button" data-src="gallery/i.webp"><img src="gallery/i.webp" loading="lazy" decoding="async" alt="Technika F. Adámek v praxi"></button>
         <button class="gallery-item" type="button" data-src="gallery/h.webp"><img src="gallery/h.webp" loading="lazy" decoding="async" alt="Servis a těžká technika F. Adámek"></button>
