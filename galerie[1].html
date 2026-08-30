@@ -65,7 +65,13 @@
     .back-link a:hover{border-color:var(--orange);color:#ffd1a1;transform:translateY(-1px)}
 
     footer{padding:28px 0;background:#080d11;border-top:1px solid var(--line);color:#7e8892;font-size:12px}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+    .footer-inner{display:flex;justify-content:space-between;align-items:flex-end;gap:28px}
+    .footer-business,.footer-meta{display:flex;flex-direction:column;gap:5px}
+    .footer-meta{align-items:flex-end;text-align:right}
+    .footer-top{color:#aeb7c0;transition:color .2s ease}
+    .footer-top:hover,.footer-top:focus-visible{color:#fff}
+    .footer-credit a{color:var(--orange);font-weight:800;transition:color .2s ease,text-shadow .2s ease}
+    .footer-credit a:hover,.footer-credit a:focus-visible{color:#ff9437;text-shadow:0 0 10px rgba(239,123,16,.35)}
 
     .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:34px;background:rgba(0,0,0,.94);backdrop-filter:blur(5px)}
     .lightbox.open{display:flex}
@@ -83,11 +89,11 @@
       .site-header{height:74px}.nav{height:74px}.brand img{width:175px}.phone{font-size:0;padding:0 13px;min-height:39px}.phone svg{width:16px;height:16px}
       .gallery-hero{padding:54px 0 30px}.gallery-section .container{width:min(1180px,calc(100% - 30px))}.gallery-grid{columns:1;column-gap:0;column-rule:0;padding-left:14px;border-left:3px solid var(--orange)}.gallery-grid::after{display:none}.gallery-item{margin-bottom:10px}.gallery-section{padding-top:8px}
       .lightbox{padding:18px}.lightbox-prev,.lightbox-next{width:42px;height:54px}.lightbox-prev{left:8px}.lightbox-next{right:8px}.lightbox-close{top:10px;right:10px}
-      .footer-inner{flex-direction:column}
+      .footer-inner{flex-direction:column;align-items:stretch}.footer-meta{align-items:flex-end;text-align:right}
     }
   </style>
 </head>
-<body>
+<body id="top">
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html#top" aria-label="Autodoprava & Servis František Adámek – úvod"><img src="Logo_pruhledny.png" alt="F. Adámek – Autodoprava & servis"></a>
@@ -139,7 +145,18 @@
   <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<footer><div class="container footer-inner"><span>© Autodoprava & Servis František Adámek</span><span>K Panelárně, Otovice 360 01</span></div></footer>
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-business">
+      <span>© Autodoprava &amp; Servis František Adámek</span>
+      <span>K Panelárně, Otovice 360 01</span>
+    </div>
+    <div class="footer-meta">
+      <a class="footer-top" href="#top">Zpět nahoru ↑</a>
+      <span class="footer-credit">Designed &amp; developed by <a href="https://mnanalysis.cz" target="_blank" rel="noopener noreferrer">MN Analysis</a></span>
+    </div>
+  </div>
+</footer>
 
 <script>
   const items=[...document.querySelectorAll('.gallery-item')];
