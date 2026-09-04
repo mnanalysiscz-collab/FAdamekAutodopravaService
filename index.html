@@ -15,6 +15,33 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://fadamek.cz/pepepepepe.png" />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Analytics 4: načte se až po souhlasu s analytickými cookies -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    function loadGoogleAnalytics() {
+      if (window.googleAnalyticsLoaded) return;
+      window.googleAnalyticsLoaded = true;
+
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-F3ZV678J75";
+      document.head.appendChild(script);
+
+      gtag("js", new Date());
+      gtag("config", "G-F3ZV678J75", { anonymize_ip: true });
+    }
+
+    try {
+      if (localStorage.getItem("analytics-consent") === "granted") {
+        loadGoogleAnalytics();
+      }
+    } catch (error) {
+      /* Web funguje i v případě, že prohlížeč úložiště blokuje. */
+    }
+  </script>
   <style>
 :root{
   --bg:#090e13;
@@ -936,6 +963,51 @@ footer{
   .footer-inner{flex-direction:column;align-items:stretch}
   .footer-meta{align-items:flex-end;text-align:right}
 }
+
+/* Cookie consent */
+.cookie-consent{
+  position:fixed;
+  z-index:1000;
+  left:24px;
+  right:24px;
+  bottom:24px;
+  max-width:760px;
+  margin-inline:auto;
+  padding:18px 20px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  align-items:center;
+  color:#f7f7f7;
+  background:rgba(13,20,27,.97);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:8px;
+  box-shadow:0 18px 55px rgba(0,0,0,.48);
+  backdrop-filter:blur(14px)
+}
+.cookie-consent[hidden]{display:none}
+.cookie-consent p{margin:0;color:#c5ccd3;font-size:13px;line-height:1.55}
+.cookie-consent strong{display:block;margin-bottom:3px;color:#fff;font-size:14px}
+.cookie-actions{display:flex;gap:9px}
+.cookie-button{
+  min-height:40px;
+  padding:0 15px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:5px;
+  color:#fff;
+  background:transparent;
+  font:inherit;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer
+}
+.cookie-button:hover,.cookie-button:focus-visible{border-color:#fff}
+.cookie-button.accept{color:#11171d;background:#f7f7f7;border-color:#f7f7f7}
+
+@media(max-width:640px){
+  .cookie-consent{left:15px;right:15px;bottom:15px;grid-template-columns:1fr;padding:17px}
+  .cookie-actions{display:grid;grid-template-columns:1fr 1fr}
+}
 </style>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Autodoprava & Servis František Adámek","telephone":"+420608963545","foundingDate":"2001","address":{"@type":"PostalAddress","streetAddress":"K Panelárně","addressLocality":"Otovice","postalCode":"360 01","addressCountry":"CZ"},"url":"https://fadamek.cz/","description":"Autodoprava, servis nákladních vozidel a autobusů, opravy převodovek a diferenciálů, nadrozměrná přeprava a vyprošťovací technika."}</script>
@@ -1098,7 +1170,42 @@ footer{
   </div>
 </footer>
 
+
+<div class="cookie-consent" id="cookie-consent" role="dialog" aria-live="polite" aria-label="Nastavení analytických cookies" hidden>
+  <p><strong>Analytické cookies</strong>Pomáhají nám anonymně zjistit, jak návštěvníci web používají, a web dále zlepšovat.</p>
+  <div class="cookie-actions">
+    <button class="cookie-button" id="cookie-reject" type="button">Odmítnout</button>
+    <button class="cookie-button accept" id="cookie-accept" type="button">Povolit</button>
+  </div>
+</div>
+
 <script>
+
+  const cookieConsent = document.getElementById("cookie-consent");
+  const cookieAccept = document.getElementById("cookie-accept");
+  const cookieReject = document.getElementById("cookie-reject");
+
+  function saveAnalyticsConsent(value) {
+    try {
+      localStorage.setItem("analytics-consent", value);
+    } catch (error) {
+      /* Volba platí alespoň po dobu aktuální návštěvy. */
+    }
+    if (cookieConsent) cookieConsent.hidden = true;
+    if (value === "granted") loadGoogleAnalytics();
+  }
+
+  let analyticsConsent = null;
+  try {
+    analyticsConsent = localStorage.getItem("analytics-consent");
+  } catch (error) {
+    analyticsConsent = null;
+  }
+
+  if (cookieConsent && !analyticsConsent) cookieConsent.hidden = false;
+  if (cookieAccept) cookieAccept.addEventListener("click", () => saveAnalyticsConsent("granted"));
+  if (cookieReject) cookieReject.addEventListener("click", () => saveAnalyticsConsent("denied"));
+
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
 
